@@ -145,27 +145,63 @@
 //}
 // 
 //位段
-typedef struct S
+//typedef struct S
+//{
+//	char a : 3;
+//	char b : 4;
+//	char c : 5;
+//	char d : 4;
+//}s;
+//
+//int main()
+//{
+//	s a = { 0 };
+//	a.a = 10;
+//	a.b = 20;
+//	a.c = 3;
+//	a.d = 4;
+//	return 0;
+//}
+//枚举
+enum Coler
 {
-	char a : 3;
-	char b : 4;
-	char c : 5;
-	char d : 4;
-}s;
-
+	//枚举常量；
+	RED,//0
+	GREEN,//1
+	BLUE//2
+};
+//联合体 共用体 公用一块空间；
+union Un
+{
+	char c;
+	int i;
+};
+int check_sys()
+{
+	union Un
+	{
+		char c;
+		int i;
+	};
+	union Un u = { 0 };
+	u.i = 1;
+	//return 1表示小端
+	//return 0表示大端
+	return u.c;
+}
 int main()
 {
-	s a = { 0 };
-	a.a = 10;
-	a.b = 20;
-	a.c = 3;
-	a.d = 4;
+	int ret = check_sys();
+	if (1 == ret)
+	{
+		printf("小端");
+	}
+	else
+	{
+		printf("大端");
+	}
 	return 0;
 }
-
-
-
-
 
 
 
